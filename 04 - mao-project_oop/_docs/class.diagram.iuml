@@ -1,0 +1,57 @@
+@startuml
+
+class JSONImporter{
+- source
+- dataset
+- destination
+}
+
+class stdClass {   
+   - Autore: 
+   - Titolo
+   - Datazione
+   - Tecnica
+   - Dimensioni
+   - Immagine
+}
+
+class Opera {
+   - provenienza:Museo
+}
+class Museo {
+   - nome
+   - descrizione 
+}
+
+class ImageProcessor {
+    - source
+    - destination
+}
+
+class Importer {
+    - dataset:Array<stdClass>
+    - result:Array<Opera>
+    - imageProcessor:ImageProcessor
+    - jsonImporter:ImageProcessor
+}
+
+class OperaCard {
+    - img
+    - title
+    - description
+}
+
+' Importer *-- ImageProcessor
+Importer *-up- JSONImporter
+
+' Importer *-- ImageProcessor 
+Importer *-up- ImageProcessor 
+' JSONImporter --* Importer
+
+Opera -left-* Museo
+' Museo  *--  Opera
+' Opera --* Museo
+
+
+stdClass <|-- Opera
+@enduml
