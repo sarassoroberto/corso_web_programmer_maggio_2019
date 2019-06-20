@@ -1,6 +1,7 @@
 <?php
 require "../autoload.php";
 $files = [
+    "./json/file_inesistente.json",
     "./json/file_vuoto.json",
     "./json/file_manca_valore.json",
     "./json/file_non_valido_immagine.json",

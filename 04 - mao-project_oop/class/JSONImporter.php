@@ -4,8 +4,12 @@ class JSONImporter
     private $dataset = '';
     public function open($source)
     {
-        $string = file_get_contents($source);
-        $this->dataset = json_decode($string);
+        if (file_exists($source)) {
+            $string = file_get_contents($source);
+            $this->dataset = json_decode($string);
+        } else {
+            throw new Exception('non riesco a trovare la risorsa $source');
+        }
 
         return $this;
     }
