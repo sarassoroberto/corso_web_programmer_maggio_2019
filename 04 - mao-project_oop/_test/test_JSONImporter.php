@@ -10,18 +10,16 @@ $files = [
     "./json/file_valido.json"
 ];
 
-
-
 $ji = new JSONImporter();
 
-
+/** impostato il foreach all'esterno del try catch cosi posso intercettare tutte le eccezioni */
 foreach ($files as $file) {
 
     try {
         echo "valuto: $file \n";
         $ji->open($file);
-        $dataset = $ji->getDataset();
     } catch (\Throwable $th) {
-        echo $th->getMessage() . "\n\n";
+        echo $th->getMessage() . "\n";
+        echo " - codice errore: " . $th->getCode() . "\n\n";
     }
 }
