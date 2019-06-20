@@ -1,6 +1,6 @@
 <?php
-// require "../autoload.php"; // custom autoload
-require "../vendor/autoload"; // composer autoload
+require "../autoload.php"; // custom autoload
+// require "../vendor/autoload"; // composer autoload
 $files = [
     "./json/file_inesistente.json",
     "./json/file_vuoto.json",
@@ -17,5 +17,11 @@ $ji = new JSONImporter();
 
 foreach ($files as $file) {
 
-    $ji->open($file);
+    try {
+        echo "valuto: $file \n";
+        $ji->open($file);
+        $dataset = $ji->getDataset();
+    } catch (\Throwable $th) {
+        echo $th->getMessage() . "\n\n";
+    }
 }
