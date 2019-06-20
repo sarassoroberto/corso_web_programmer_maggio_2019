@@ -9,12 +9,13 @@ class JSONImporter
      * Apre un file formato json e lo converte in un array di stdClass
      *
      * @param string $source indirizzo della risorsa locale o remota tramite protocollo HTTP
-     * @return void
+     * @return JSONImporter un istanza dell'oggetto stesso
      * @todo aggiungere i controli per url non corretti
      * @todo gestire i codici e i messaggi di errore per file non trovato all'interno della classe tramite costanti di classe
      */
-    public function open($source)
+    public function open($source): JSONImporter
     {
+        $string = '';
         if (file_exists($source)) {
             $string = file_get_contents($source);
         } else {
@@ -83,9 +84,9 @@ class JSONImporter
      * @todo implementare la creazione delle cartelle se necessaria
      * @return void
      */
-    public function save($location)
+    public function save($location): void
     {
         $data = json_encode($this->dataset);
-        return file_put_contents($location, $data);
+        file_put_contents($location, $data);
     }
 }

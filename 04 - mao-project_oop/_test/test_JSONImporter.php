@@ -1,6 +1,6 @@
 <?php
 require "../autoload.php"; // custom autoload
-// require "../vendor/autoload"; // composer autoload
+// require "../vendor/autoload.php"; // composer autoload
 /** @todo: trovare il modo di testare gli alti codici di errore diversi da $ syntax error */
 
 $files = [

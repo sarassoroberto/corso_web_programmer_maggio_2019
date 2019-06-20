@@ -2,8 +2,8 @@
 
 class JSONImporter{
 - dataset
-+ open()
-+ save()
++ open(source)
++ save(location)
 }
 
 class stdClass {   
@@ -24,8 +24,8 @@ class Museo {
 }
 
 class ImageDownloader {
-    + open()
-    + save()
+    + open(source)
+    + save(location)
 }
 
 class Importer {

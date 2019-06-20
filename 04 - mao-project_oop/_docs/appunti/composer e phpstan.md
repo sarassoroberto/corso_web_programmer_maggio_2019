@@ -20,7 +20,7 @@ vendor/bin/phpstan analyse src tests
 *in questo progetto:*
 
 ```bash
-vendor/bin/phpstan/ analyse class _test --level 7
+vendor/bin/phpstan analyse class _test --level 7
 ```
 
 ### come includere cartelle nell' autoloading
