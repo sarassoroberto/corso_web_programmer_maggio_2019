@@ -1,9 +1,9 @@
 @startuml
 
 class JSONImporter{
-- source
 - dataset
-- destination
++ open()
++ save()
 }
 
 class stdClass {   
@@ -23,16 +23,16 @@ class Museo {
    - descrizione 
 }
 
-class ImageProcessor {
-    - source
-    - destination
+class ImageDownloader {
+    + open()
+    + save()
 }
 
 class Importer {
     - dataset:Array<stdClass>
     - result:Array<Opera>
-    - imageProcessor:ImageProcessor
-    - jsonImporter:ImageProcessor
+    - imageDownloader:ImageDownloader
+    - jsonImporter:JsonImporter
 }
 
 class OperaCard {
@@ -41,17 +41,20 @@ class OperaCard {
     - description
 }
 
-' Importer *-- ImageProcessor
+
 Importer *-up- JSONImporter
 
-' Importer *-- ImageProcessor 
-Importer *-up- ImageProcessor 
-' JSONImporter --* Importer
+
+Importer *-up- ImageDownloader 
+
 
 Opera -left-* Museo
-' Museo  *--  Opera
-' Opera --* Museo
-
-
 stdClass <|-- Opera
+
+
+' together {
+'   class Opera
+'   class stdClass
+'   class Museo
+' }
 @enduml
