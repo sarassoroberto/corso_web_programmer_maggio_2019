@@ -1,6 +1,8 @@
 <?php
 require "../autoload.php"; // custom autoload
 // require "../vendor/autoload"; // composer autoload
+/** @todo: trovare il modo di testare gli alti codici di errore diversi da $ syntax error */
+
 $files = [
     "./json/file_inesistente.json",
     "./json/file_vuoto.json",

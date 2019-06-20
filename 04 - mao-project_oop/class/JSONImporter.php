@@ -4,12 +4,20 @@
 class JSONImporter
 {
     private $dataset = '';
+
+    /**
+     * Apre un file formato json e lo converte in un array di stdClass
+     *
+     * @param string $source indirizzo della risorsa locale o remota tramite protocollo HTTP
+     * @return void
+     * @todo aggiungere i controli per url non corretti
+     * @todo gestire i codici e i messaggi di errore per file non trovato all'interno della classe tramite costanti di classe
+     */
     public function open($source)
     {
         if (file_exists($source)) {
             $string = file_get_contents($source);
         } else {
-            throw new Exception('non riesco a trovare la risorsa $source');
             throw new Exception("non riesco a trovare la risorsa $source");
         }
 
@@ -29,13 +37,6 @@ class JSONImporter
 
         return $this;
     }
-
-    public function save($location)
-    {
-        $data = json_encode($this->dataset);
-        return file_put_contents($location, $data);
-    }
-
 
     /**
      * permette di tradurre l'errore del decoding del json in forma comprensibile
@@ -72,5 +73,19 @@ class JSONImporter
                 return ' - Unknown error';
                 break;
         }
+    }
+
+    /**
+     * Permette di salvare il dataset in un file formato json
+     *
+     * @param string $location percorso del file json da salvare compreso di nome del file
+     * @todo da testare, percorso inesistente, 
+     * @todo implementare la creazione delle cartelle se necessaria
+     * @return void
+     */
+    public function save($location)
+    {
+        $data = json_encode($this->dataset);
+        return file_put_contents($location, $data);
     }
 }
