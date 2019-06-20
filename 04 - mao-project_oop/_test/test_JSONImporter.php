@@ -1,5 +1,6 @@
 <?php
-require "../autoload.php";
+// require "../autoload.php"; // custom autoload
+require "../vendor/autoload"; // composer autoload
 $files = [
     "./json/file_inesistente.json",
     "./json/file_vuoto.json",

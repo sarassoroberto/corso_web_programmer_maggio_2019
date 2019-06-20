@@ -14,3 +14,6 @@ https://github.com/karriereat/json-decoder
 
 
 https://ocramius.github.io/blog/accessing-private-php-class-members-without-reflection/
+
+interessante anche per lutilizzo dei namespace
+https://www.html.it/articoli/php-generare-eccezioni-invece-di-restituire-false/
