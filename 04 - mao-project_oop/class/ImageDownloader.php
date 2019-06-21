@@ -9,6 +9,16 @@ class ImageDownloader
         $this->imagedata = file_get_contents($source);
     }
 
+    /**
+     * salva il file scaricato 
+     * @todo controllare la destinazione
+     * @todo stabilire un criterio di creazione delle cartelle 
+     * @todo stabilire un criterio di rinomina dei file esistenti
+     * @todo  stabilire un criterio di sovrascrittura
+     * 
+     * @param string $location percorso dove salvare i file comprensivo di nome
+     * @return void
+     */
     public function save($location): void
     {
         echo ("" . __CLASS__ . '->' . __FUNCTION__ . ' Line: ' . __LINE__) . "\n";
