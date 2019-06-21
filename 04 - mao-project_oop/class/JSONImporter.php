@@ -82,6 +82,8 @@ class JSONImporter
      * @param string $location percorso del file json da salvare compreso di nome del file
      * @todo da testare, percorso inesistente, 
      * @todo implementare la creazione delle cartelle se necessaria
+     * 
+     * @see https://stackoverflow.com/questions/11068093/renaming-duplicate-files-in-a-folder-with-php utile per il criterio di rinomina
      * @return void
      */
     public function save($location): void
