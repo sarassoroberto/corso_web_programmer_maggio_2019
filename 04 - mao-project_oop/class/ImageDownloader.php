@@ -11,7 +11,29 @@ class ImageDownloader
 
     public function save($location): void
     {
-        file_put_contents($location, $this->imagedata);
+        echo ("" . __CLASS__ . '->' . __FUNCTION__ . ' Line: ' . __LINE__) . "\n";
+        $dirname = dirname($location);
+        $basename = basename($location);
+
+        echo "--------------------------------------\n";
+        echo "Valuto:\n";
+        echo $dirname . "\n";
+        echo $basename . "\n";
+
+        if (!is_dir($dirname)) {
+            echo "$dirname non è una directory\n";
+        }
+
+        if (!is_file($basename)) {
+            echo "$basename non è un file\n";
+        }
+
+        if (!file_exists($dirname)) {
+            echo "$dirname non esiste\n";
+        }
+        echo "---------------------------------------\n";
+
+        @file_put_contents($location, $this->imagedata);
     }
 
     /**
