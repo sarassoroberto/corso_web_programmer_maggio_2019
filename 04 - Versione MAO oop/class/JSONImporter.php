@@ -8,12 +8,18 @@ class JSONImporter
 
     public function open($source)
     {
+
+        //var_dump(file_get_contents($source));
+
         /** 
          * i formati supportati da file get content
          * @see https://www.php.net/manual/en/wrappers.php
          */
-        if(file_exists($source)){
-            $dataset_string = file_get_contents($source);
+        $dataset_string = @file_get_contents($source);
+        if($dataset_string ){
+
+            echo "dentro if";
+            
             
             $this->dataset = json_decode($dataset_string);
             $error = json_last_error();
@@ -27,10 +33,11 @@ class JSONImporter
             //json_last_error_msg
 
         }else{
-           
-            throw new Exception("il file $source non esiste",JSONImporter::ERROR_FILE_NOT_FOUND);
+           echo "else";
+            throw new Exception("\nil file $source non esiste\n",JSONImporter::ERROR_FILE_NOT_FOUND);
         }
     }
+
 
 
     /**
