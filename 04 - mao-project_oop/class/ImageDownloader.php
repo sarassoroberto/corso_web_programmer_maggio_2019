@@ -14,7 +14,7 @@ class ImageDownloader
      * @todo controllare la destinazione
      * @todo stabilire un criterio di creazione delle cartelle 
      * @todo stabilire un criterio di rinomina dei file esistenti
-     * @todo  stabilire un criterio di sovrascrittura
+     * @todo stabilire un criterio di sovrascrittura
      * 
      * @param string $location percorso dove salvare i file comprensivo di nome
      * @return void
