@@ -3,7 +3,10 @@
 
 class JSONImporter
 {
-    private $dataset = '';
+    private $dataset;
+
+
+
 
     /**
      * Apre un file formato json e lo converte in un array di stdClass
@@ -15,10 +18,9 @@ class JSONImporter
      */
     public function open($source): JSONImporter
     {
+
         $string = '';
-        if (file_exists($source)) {
-            $string = file_get_contents($source);
-        } else {
+        if (!$string = file_get_contents($source)) {
             throw new Exception("non riesco a trovare la risorsa $source");
         }
 
@@ -30,10 +32,11 @@ class JSONImporter
 
         $this->dataset = json_decode($string);
         $error_code = json_last_error();
+        $error_msg = json_last_error_msg();
 
         if ($error_code !== JSON_ERROR_NONE) {
-            $errorMessage = $this->getDecodeErrorMessage($error_code);
-            throw new Exception($errorMessage, $error_code);
+
+            throw new Exception($error_msg, $error_code);
         }
 
         return $this;
@@ -49,32 +52,7 @@ class JSONImporter
      * @uses JSONImporter::open()
      */
 
-    private function getDecodeErrorMessage($json_error): string
-    {
-        switch (json_last_error()) {
-            case JSON_ERROR_NONE:
-                return ' - No errors';
-                break;
-            case JSON_ERROR_DEPTH:
-                return ' - Maximum stack depth exceeded';
-                break;
-            case JSON_ERROR_STATE_MISMATCH:
-                return ' - Underflow or the modes mismatch';
-                break;
-            case JSON_ERROR_CTRL_CHAR:
-                return ' - Unexpected control character found';
-                break;
-            case JSON_ERROR_SYNTAX:
-                return ' - Syntax error, malformed JSON';
-                break;
-            case JSON_ERROR_UTF8:
-                return ' - Malformed UTF-8 characters, possibly incorrectly encoded';
-                break;
-            default:
-                return ' - Unknown error';
-                break;
-        }
-    }
+
 
     /**
      * Permette di salvare il dataset in un file formato json
@@ -90,5 +68,16 @@ class JSONImporter
     {
         $data = json_encode($this->dataset);
         file_put_contents($location, $data);
+    }
+
+
+    public function getDataset()
+    {
+        return $this->dataset;
+    }
+    public function setDataset($dataset)
+    {
+        $this->dataset = $dataset;
+        return $this;
     }
 }
