@@ -8,4 +8,6 @@ class Opera
     public $Tecnica;
     public $Dimensioni;
     public $Immagine;
+
+   
 }

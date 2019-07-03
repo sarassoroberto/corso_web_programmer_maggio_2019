@@ -30,7 +30,7 @@ class JSONImporter
          *       https://www.php.net/manual/en/function.json-last-error.php
          */
 
-        $this->dataset = json_decode($string);
+        $this->setDataset(json_decode($string));
         $error_code = json_last_error();
         $error_msg = json_last_error_msg();
 
