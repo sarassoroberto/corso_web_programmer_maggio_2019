@@ -1,7 +1,7 @@
 <?php
 
 
-class OperaImporterb extends JSONImporter
+class OperaImporter extends JSONImporter
 {
     private $dataset;
 
@@ -18,7 +18,7 @@ class OperaImporterb extends JSONImporter
            $opera->Tecnica = $o->Tecnica;
 
 
-           $opera->Immagine = $this->imageImporter();
+           $opera->Immagine = $this->imageImporter($o->Immagine);
 
            $this->dataset[] = $opera;
         }
@@ -31,7 +31,9 @@ class OperaImporterb extends JSONImporter
     {
         
         $id = new ImageDownloader();
+        // echo basename();
         $id->open($original_src);
-        mkdir
+        $id->save('image/originali');
+       
     }
 }

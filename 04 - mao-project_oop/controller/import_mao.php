@@ -2,7 +2,7 @@
 include "../config.php";
 include "../autoload.php";
 
-$ji = new JSONImporter();
+$ji = new OperaImporter();
 
 $ji->open("https://www.fondazionetorinomusei.it/sites/default/files/allegati/COLLEZIONI_MAO.json");
 
