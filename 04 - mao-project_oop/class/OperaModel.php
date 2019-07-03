@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 /**
  * C.R.U.D.
@@ -39,38 +38,10 @@ class OperaModel
 
             // restituisce id dell' opera inserita --> se la voglio collocare subito in un museo
             echo "opera inserita id: " . $thtis->pdo->lastInsertId();
-
         } catch (PDOException $e) {
-            
-=======
-class OperaModel
-{
-    private $pdo;
 
-    public function __constructor()
-    {
-        try {
-            $hostname = "localhost";
-            $dbname = "museo";
-            $user = "root";
-            $pass = "fiacca";
-            $this->pdo  = new PDO("mysql:host=$hostname;dbname=$dbname", $user, $pass);
-        } catch (\Throwable $e) {
->>>>>>> 16c6973436baf58f9bd97cfcdf180054708ade46
             echo $e->getMessage();
         }
-    }
-
-<<<<<<< HEAD
-    /**
-     * permette di ottenere l'elenco di tutte le opere
-     */
-    public function readAll()
-    { }
-
-    public function readDyId(int $id_opera)
-    {
-        # code...
     }
 
     /**
@@ -85,11 +56,3 @@ class OperaModel
     public function delete(int $id_opera)
     { }
 }
-=======
-    public function create($opera)
-    {
-        $this->pdo->prepare();
-    }
-}
-
->>>>>>> 16c6973436baf58f9bd97cfcdf180054708ade46
