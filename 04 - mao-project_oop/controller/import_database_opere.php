@@ -1,10 +1,15 @@
 <?php
+use claviska\SimpleImage;
+
 include "../config.php";
 include "../autoload.php";
+// include "../vendor/autoload.php";
 
 $pdo = DbConnection::getConnection();
 $operaModel = new OperaModel($pdo);
 $imagedl = new ImageDownloader();
+
+
 
 $jsonImporter = new JSONImporter();
 $jsonImporter->open("https://www.fondazionetorinomusei.it/sites/default/files/allegati/COLLEZIONI_MAO.json");
@@ -33,6 +38,13 @@ foreach ($dati as $o) {
 
         $operaModel->create($opera);
         //print_r($opera);
+
+        $image = new SimpleImage();
+        $image->fromFile("../images/originali/$opera->Immagine");
+        $image->bestFit(100,100);
+        mkdir("../images/small/");
+        $image->toFile("../images/small/$opera->Immagine");
+
 
     } catch (Exception $e) {
         echo $e->getMessage();
