@@ -3,7 +3,7 @@ include "../config.php";
 include "../autoload.php";
 
 $pdo = DbConnection::getConnection();
-$model = new OperaModel($pdo);
+$operaModel = new OperaModel($pdo);
 $imagedl = new ImageDownloader();
 
 $jsonImporter = new JSONImporter();
@@ -31,7 +31,8 @@ foreach ($dati as $o) {
         $imagedl->open($o->Immagine);
         $opera->Immagine = $imagedl->save('../images/originali/');
 
-       print_r($opera);
+        $operaModel->create($opera);
+        //print_r($opera);
 
     } catch (Exception $e) {
         echo $e->getMessage();
