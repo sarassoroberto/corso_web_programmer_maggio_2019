@@ -37,7 +37,7 @@ class OperaModel
             $stm->execute();
 
             // restituisce id dell' opera inserita --> se la voglio collocare subito in un museo
-            echo "opera inserita id: " . $thtis->pdo->lastInsertId();
+            echo "opera inserita id: " . $this->pdo->lastInsertId();
         } catch (PDOException $e) {
 
             echo $e->getMessage();

@@ -70,6 +70,10 @@ class JSONImporter
         file_put_contents($location, $data);
     }
 
+    public function slice($from,$offset)
+    {
+        return array_slice($this->dataset,$from,$offset);
+    }
 
     public function getDataset()
     {

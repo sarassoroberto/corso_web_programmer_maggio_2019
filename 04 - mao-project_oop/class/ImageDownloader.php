@@ -2,6 +2,8 @@
 class ImageDownloader
 {
     private $imagedata;
+
+    /** @var string $source percorso originale dell'immagine */
     private $source;
     public function open($source): void
     {
@@ -17,34 +19,34 @@ class ImageDownloader
      * @todo stabilire un criterio di sovrascrittura
      * 
      * @param string $location percorso dove salvare i file comprensivo di nome
-     * @return void
+     * @return string
      */
-    public function save($location): void
+    
+    public function save(string $location): string
     {
-        echo ("" . __CLASS__ . '->' . __FUNCTION__ . ' Line: ' . __LINE__) . "\n";
-        $dirname = dirname($location);
-        $basename = basename($location);
+        // creo location se non esiste
+        
+        @mkdir($location,null,true);
 
-        echo "--------------------------------------\n";
-        echo "Valuto:\n";
-        echo $dirname . "\n";
-        echo $basename . "\n";
-
-        if (!is_dir($dirname)) {
-            echo "$dirname non è una directory\n";
+        if(!file_exists($location)){
+            throw new Exception("Impossibile creare la directory di destinazione");   
         }
 
-        if (!is_file($basename)) {
-            echo "$basename non è un file\n";
-        }
-
-        if (!file_exists($dirname)) {
-            echo "$dirname non esiste\n";
-        }
-        echo "---------------------------------------\n";
-
-        @file_put_contents($location, $this->imagedata);
+        $destination_filename = $this->transformOriginalName();
+        
+        @file_put_contents($location.$destination_filename, $this->imagedata);
+        return $destination_filename;
     }
+
+    private function transformOriginalName()
+    {
+        // echo $this->source."\n";
+        // echo basename($this->source)."\n";
+        return basename($this->source);
+    }
+
+
+
 
     /**
      * controlla la validità di un url
