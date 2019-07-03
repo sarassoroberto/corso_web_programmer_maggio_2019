@@ -18,7 +18,7 @@ class OperaImporterb extends JSONImporter
            $opera->Tecnica = $o->Tecnica;
 
 
-           $opera->Immagine =
+           $opera->Immagine = $this->imageImporter();
 
            $this->dataset[] = $opera;
         }
@@ -27,5 +27,11 @@ class OperaImporterb extends JSONImporter
         return $this;
     }
 
-  
+    public function imageImporter($original_src)
+    {
+        
+        $id = new ImageDownloader();
+        $id->open($original_src);
+        mkdir
+    }
 }
