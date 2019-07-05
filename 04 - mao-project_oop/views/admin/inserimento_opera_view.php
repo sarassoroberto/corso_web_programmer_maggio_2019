@@ -10,22 +10,32 @@
             </div>
         </div>
         <div class="form-group row">
+            
+            
             <label for="Titolo" class="col-4 col-form-label">Titolo</label>
             <div class="col-8">
-                <input id="Titolo" name="Titolo" value ="Statua del budda" type="text" class="form-control">
+                <input id="Titolo" name="Titolo"  type="text" class="form-control">
             </div>
+            <?php
+            if(isset($errors['Titolo'])) {
+                echo $errors['Titolo'];
+            }
+            ?>
         </div>
 
         <div class="form-group row">
             <label for="Datazione" class="col-4 col-form-label">Datazione</label>
             <div class="col-8">
-                <input id="Datazione" name="Datazione" type="text" class="form-control">
+                <input id="Datazione" value="<?php echo $opera->Datazione ?>" 
+                name="Datazione" type="text" class="form-control">
             </div>
         </div>
         <div class="form-group row">
             <label for="Tecnica" class="col-4 col-form-label">Tecnica</label>
             <div class="col-8">
-                <input id="Tecnica" name="Tecnica" type="text" class="form-control">
+                <input id="Tecnica" name="Tecnica" 
+                value="<?php echo $opera->Tecnica ?>"   
+                type="text" class="form-control">
             </div>
         </div>
 
