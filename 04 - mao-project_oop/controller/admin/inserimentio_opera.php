@@ -1,12 +1,19 @@
 <?php
+include "../../autoload.php";
 
-print_r($_POST);
+$opera = new Opera();
 
-print_r(
-$_SERVER["REQUEST_METHOD"]
-);
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    echo "<p>form inviato <br></p>";
+    $opera->Titolo = filter_input(INPUT_POST,'Titolo');
 
 
+
+    var_dump($opera->Titolo);
+    var_dump(empty($opera->Titolo));
+
+    // print_r($opera);
+}
 
 
 

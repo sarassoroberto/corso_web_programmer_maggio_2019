@@ -3,6 +3,7 @@
     form action : <?php echo $_SERVER['PHP_SELF']  ?>
 </p>
 <form action="<?php echo $_SERVER['PHP_SELF']  ?>" method="POST"> 
+<!-- <form action="../../_test/form.php" method="POST">  -->
 <div class="form-group row">
   <label for="Autore" class="col-4 col-form-label">Autore</label> 
   <div class="col-8">
@@ -14,7 +15,7 @@
 <div class="form-group row">
         <label for="Titolo" class="col-4 col-form-label">Titolo</label> 
         <div class="col-8">
-          <input id="Titolo" name="Titolo" type="text" class="form-control">
+          <input id="Titolo" name="Titolo" type="text" value="<?php echo $opera->Titolo?>" class="form-control">
         </div>
 </div>
 <div class="form-group row">
