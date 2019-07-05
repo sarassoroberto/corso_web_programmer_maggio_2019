@@ -1,4 +1,4 @@
-<?php include __DIR__."header.php"; ?>
+<?php include __DIR__."/header.php"; ?>
 
 <form>
 <div class="form-group row">
@@ -55,4 +55,4 @@
 </form>
 
 
-<?php include __DIR__."footer.php";
+<?php include __DIR__."/footer.php";
