@@ -11,7 +11,7 @@ class Validator{
      * pulizia di base elimina gli spazi e converte i caratteri 
      * speciali in entità html e gli slash.
      *
-     * @param [type] $ata
+     * @param [type] $data
      * @return void
      */
 
@@ -26,13 +26,30 @@ class Validator{
     /**
      * elimina i tag da una stringa
      *
-     * @param string $ata
+     * @param string $data
      * @return string
      */
-    
+
     public function striptag($data):string
     {
         $data = strip_tags($data);
         return $data;
+    }
+
+    /**
+     * controlla se il valore di un for e vuoto
+     *
+     * @param string $data
+     * @return string
+     */
+
+    public function required($data):bool
+    {
+        $data = self::base($data);
+        
+        // empty restituisce true se la stringa e nulla 
+        // empty('') --> true, empty(' ') --> false,  empty('ciao') --> false
+        // quindi per avere l'effetto voluto devo negare con !
+        return !empty($data);
     }
 }
