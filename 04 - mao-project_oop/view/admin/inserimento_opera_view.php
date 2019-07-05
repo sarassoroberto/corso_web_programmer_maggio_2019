@@ -9,12 +9,7 @@
     <input id="Autore" name="Autore" type="text" class="form-control">
   </div>
 </div>
-<div class="form-group row">
-  <label for="Titolo" class="col-4 col-form-label">Titolo</label> 
-  <div class="col-8">
-    <input id="Titolo" name="Titolo" type="text" class="form-control">
-  </div>
-</div> 
+
 
 <div class="form-group row">
         <label for="Titolo" class="col-4 col-form-label">Titolo</label> 
