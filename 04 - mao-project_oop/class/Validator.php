@@ -15,7 +15,7 @@ class Validator{
      * @return void
      */
 
-    public function base($data):string
+    public static function base($data):string
     {
         $data = trim($data);
         $data = stripslashes($data);
@@ -30,7 +30,7 @@ class Validator{
      * @return string
      */
 
-    public function striptag($data):string
+    public static function striptag($data):string
     {
         $data = strip_tags($data);
         return $data;
@@ -43,7 +43,7 @@ class Validator{
      * @return string
      */
 
-    public function required($data):bool
+    public static function required($data):bool
     {
         $data = self::base($data);
         
