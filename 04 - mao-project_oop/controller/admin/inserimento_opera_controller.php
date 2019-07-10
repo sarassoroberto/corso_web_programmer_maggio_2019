@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $om = new OperaModel($conn);
         $om->create($opera);
 
-
+        header('Location: ./elenco_opere_controller.php');
         echo "tutto ok";
     }
     
