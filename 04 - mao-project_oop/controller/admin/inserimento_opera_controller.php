@@ -6,9 +6,10 @@ include "../../autoload.php";
 $opera = new Opera();
 $errors = [];
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    print_r($_POST);
+
     // - prendere i dati del form
     
+    // validazione e gestione errori 
     $titolo = filter_input(INPUT_POST,'Titolo');
     if(Validator::required($titolo)){
         $opera->Titolo = $titolo;
@@ -18,19 +19,23 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     };
 
     $opera->Tecnica = filter_input(INPUT_POST,'Tecnica');
+    $opera->Autore = filter_input(INPUT_POST,'Autore');
+    $opera->Datazione = filter_input(INPUT_POST,'Datazione');
+    $opera->Dimensioni = filter_input(INPUT_POST,'Dimensioni');
+    $opera->Immagine = filter_input(INPUT_POST,'Immagine');
 
-    if(count($errors)>0){
-        echo "ci sono errori";
+    if(count($errors)==0){
+        // se tutto ok
+        // salviamo opera nel datbase
+        
+        $conn = DbConnection::getConnection();
+        $om = new OperaModel($conn);
+        $om->create($opera);
+
+
+        echo "tutto ok";
     }
     
-    // validazione e gestione errori 
-
-    // se tutto ok
-    // instanziamo  un  Opera 
-    // OperaModel::create()
-    
-}else{
-    echo "non ho compilato il form";
 }
 
 
