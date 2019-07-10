@@ -1,6 +1,6 @@
 <?php include __DIR__ . "/header.php"; ?>
 
-<form action="<?php echo $_SERVER['PHP_SELF']  ?>" method="POST">
+<form action="<?php echo $_SERVER['PHP_SELF']  ?>" method="POST" enctype="multipart/form-data">
   <div class="form-group row">
     <label for="Autore" class="col-4 col-form-label">Autore</label>
     <div class="col-8">
