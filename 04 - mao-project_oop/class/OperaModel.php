@@ -73,5 +73,10 @@ class OperaModel
      * permette di cancellare un opera
      */
     public function delete(int $id_opera)
-    { }
+    { 
+        $sql = "DELETE FROM opera WHERE id_opera=$id_opera;";
+
+        $stm = $this->pdo->prepare($sql);
+        $stm->execute();
+    }
 }

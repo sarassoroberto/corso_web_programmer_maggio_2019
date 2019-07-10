@@ -14,13 +14,13 @@
 <?php foreach($opere as $opera){ ?>
 
     <tr>
-        <td> <?= $opera->Titolo  ?></td>
+        <td> <?= $opera->id_opera ?>  <?= $opera->Titolo  ?></td>
         <td> <?= $opera->Autore  ?></td>
         <td>
             <a href="#">modifica</a> 
         </td>
         <td>
-            <a href="elimina_opera_controller.php">elimina</a> 
+            <a href="./elimina_opera_controller.php?id_opera=<?= $opera->id_opera ?>">elimina</a> 
         </td>
     </tr>
 
