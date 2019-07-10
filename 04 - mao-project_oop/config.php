@@ -8,6 +8,6 @@
  define('DB_PORT',3306);
  
  
- define('UPLOAD_DIR_ORIGINALI',__DIR__.'/img/originali/');
- define('UPLOAD_DIR_MINIATURE',__DIR__.'/img/miniature/');
+ define('IMG_DIR_ORIGINALI',__DIR__.'/img/originali');
+ define('IMG_DIR_MINIATURE',__DIR__.'/img/miniature');
 
