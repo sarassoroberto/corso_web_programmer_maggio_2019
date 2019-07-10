@@ -17,6 +17,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
        
     } 
     $opera->Titolo = $titolo;
+
+    if(count($errors)==0){
+        echo "ok puoi salvare";
+    }
 } 
 
 
