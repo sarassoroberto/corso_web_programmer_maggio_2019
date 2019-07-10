@@ -13,6 +13,23 @@ class OperaModel
         $this->pdo = $pdo;
     }
 
+    public function readAll():array
+    {
+        try {
+            $sql = "SELECT * from opera;";
+            $stm = $this->pdo->prepare($sql); 
+
+            $stm->execute();
+
+            $res = $stm->fetchAll(PDO::FETCH_CLASS,'Opera');
+
+            return $res;
+
+        } catch (PDOException $th) {
+            echo $th->getMessage();
+        }
+    }
+
     /**
      * permette di inserire un opera
      */
