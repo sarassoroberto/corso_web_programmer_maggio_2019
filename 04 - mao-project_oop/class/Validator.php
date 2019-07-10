@@ -46,7 +46,7 @@ class Validator{
     public static function required($data):bool
     {
         $data = self::base($data);
-        
+        var_dump(empty($data));
         // empty restituisce true se la stringa e nulla 
         // empty('') --> true, empty(' ') --> false,  empty('ciao') --> false
         // quindi per avere l'effetto voluto devo negare con !

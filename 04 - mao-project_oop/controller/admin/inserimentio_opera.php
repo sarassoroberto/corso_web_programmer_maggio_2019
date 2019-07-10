@@ -1,22 +1,23 @@
 <?php
+include "../../config.php";
 include "../../autoload.php";
 
 $opera = new Opera();
-
+$errors = [];
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    echo "<p>form inviato <br></p>";
-    $opera->Titolo = filter_input(INPUT_POST,'Titolo');
 
-
-
-    var_dump($opera->Titolo);
-    var_dump(empty($opera->Titolo));
-
-    // print_r($opera);
-}
-
+    $titolo = filter_input(INPUT_POST,'Titolo');
+   
+    /**
+     * Validazione del titolo obbligatoria
+     */
+    if(!Validator::required($titolo)) {
+     
+        $errors['Titolo'] = 'Il titolo è obbligatorio'; 
+       
+    } 
+    $opera->Titolo = $titolo;
+} 
 
 
 include "../../view/admin/inserimento_opera_view.php";
-
-
