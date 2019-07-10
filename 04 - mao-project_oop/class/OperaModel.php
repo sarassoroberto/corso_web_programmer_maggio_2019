@@ -79,4 +79,18 @@ class OperaModel
         $stm = $this->pdo->prepare($sql);
         $stm->execute();
     }
+    /**
+     * permette di cancellare un opera
+     */
+    public function readById(int $id_opera):Opera
+    { 
+        $sql = "SELECT * FROM opera WHERE id_opera=$id_opera;";
+
+        $stm = $this->pdo->prepare($sql);
+        $stm->execute();
+        $res = $stm->fetchAll(PDO::FETCH_CLASS,'Opera');
+
+        return $res[0];
+
+    }
 }

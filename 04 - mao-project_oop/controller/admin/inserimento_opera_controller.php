@@ -3,7 +3,15 @@ include "../../config.php";
 include "../../autoload.php";
 // gestire inserimento dell'opera
 // - validazione server
-$opera = new Opera();
+$id_opera = filter_input(INPUT_GET,'id_opera',FILTER_VALIDATE_INT);
+$om = new OperaModel($conn);
+if($id_opera){
+    
+   $opera  = $om->readByID($id_opera);
+}else{
+
+   $opera = new Opera();
+}
 $errors = [];
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -29,7 +37,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         // salviamo opera nel datbase
         
         $conn = DbConnection::getConnection();
-        $om = new OperaModel($conn);
+       
         $om->create($opera);
 
         header('Location: ./elenco_opere_controller.php');
