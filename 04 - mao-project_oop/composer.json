@@ -1,5 +1,6 @@
 {
     "require": {
-        "claviska/simpleimage": "^3.3"
+        "claviska/simpleimage": "^3.3",
+        "verot/class.upload.php": "dev-master"
     }
 }

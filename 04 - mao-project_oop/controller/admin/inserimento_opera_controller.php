@@ -56,7 +56,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $om->create($opera);
         }
        
-        
+        header('Location: ./elenco_opere_controller');
        
     }
     
