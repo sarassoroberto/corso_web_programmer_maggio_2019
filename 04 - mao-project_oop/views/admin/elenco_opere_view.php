@@ -17,7 +17,7 @@
         <td> <?= $opera->id_opera ?>  <?= $opera->Titolo  ?></td>
         <td> <?= $opera->Autore  ?></td>
         <td>
-            <a href="#">modifica</a> 
+            <a href="./inserimento_opera_controller.php?id_opera=<?= $opera->id_opera ?>">modifica</a> 
         </td>
         <td>
             <a href="./elimina_opera_controller.php?id_opera=<?= $opera->id_opera ?>">elimina</a> 

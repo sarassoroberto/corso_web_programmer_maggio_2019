@@ -89,7 +89,7 @@ class OperaModel
         $stm = $this->pdo->prepare($sql);
         $stm->execute();
         $res = $stm->fetchAll(PDO::FETCH_CLASS,'Opera');
-
+        
         return $res[0];
 
     }

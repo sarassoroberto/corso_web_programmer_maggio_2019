@@ -4,6 +4,8 @@
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>"  
     method="POST" enctype="multipart/form-data" >
+
+        <input type="hidden" name="id_opera" value="<?= $id_opera ?>" >
         <div class="form-group row">
             <label for="Autore" class="col-4 col-form-label">Inserisci l'autore dell'opera</label>
             <div class="col-8">

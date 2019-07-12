@@ -4,13 +4,15 @@ include "../../autoload.php";
 // gestire inserimento dell'opera
 // - validazione server
 $id_opera = filter_input(INPUT_GET,'id_opera',FILTER_VALIDATE_INT);
+
 $conn = DbConnection::getConnection();
 $om = new OperaModel($conn);
+
 if($id_opera){
-    
+    echo "inizio modifica $id_opera";
    $opera  = $om->readByID($id_opera);
 }else{
-
+   // modalita inserimento
    $opera = new Opera();
 }
 $errors = [];
@@ -39,23 +41,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         
        
        
-        $om->uploadImmagine();
-        //$om->create($opera);
-
-       // header('Location: ./elenco_opere_controller.php');
+        //$om->uploadImmagine();
+        $om->create($opera);
+        header('Location: ./elenco_opere_controller.php');
         //echo "tutto ok";
     }
     
 }
 
 
-// print_r($_SERVER);
-
-
-// - inserimento dei dati
-
-
-// - vedere il form di inserimento
-// ---> utilizza la vista 
 
 include "../../views/admin/inserimento_opera_view.php";
