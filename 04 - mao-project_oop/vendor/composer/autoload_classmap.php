@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'upload' => $vendorDir . '/verot/class.upload.php/src/class.upload.php',
 );

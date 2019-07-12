@@ -120,15 +120,18 @@ class OperaModel
     }
 
     public function uploadImmagine(){
+
+       //  move_uploaded_file($_FILES['Immagine']['tmp_name'],UPLOAD_DIR.$_FILES['Immagine']['name']);
         echo "faccio upload";
         print_r($_FILES);
+
         $handle = new upload($_FILES['Immagine']);
         if ($handle->uploaded) {
             $handle->file_auto_rename = true;
            // $handle->allowed = array('image/*');
             $handle->process(ROOT."/images/originali"); 
 
-            echo $handle->file_dst_path;
+            return $handle->file_src_name;
         }else{
             echo $handle->error;
         }

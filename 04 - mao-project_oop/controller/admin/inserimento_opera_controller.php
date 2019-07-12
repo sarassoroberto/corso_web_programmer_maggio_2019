@@ -5,6 +5,7 @@ include "../../autoload.php";
 // - validazione server
 
 print_r($_POST);
+print_r($_FILES);
 
 $id_opera = filter_input(INPUT_GET,'id_opera',FILTER_VALIDATE_INT);
 
@@ -45,15 +46,17 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         if($id_opera){
             $opera->id_opera = $id_opera;
             // modifica
+            $opera->Immagine =  $om->uploadImmagine();
+           
+            
             $om->update($opera);
         }else{
             // inserimento
+            $opera->Immagine =  $om->uploadImmagine();
             $om->create($opera);
         }
        
-       
-        //$om->uploadImmagine();
-        header('Location: ./elenco_opere_controller.php');
+        
        
     }
     

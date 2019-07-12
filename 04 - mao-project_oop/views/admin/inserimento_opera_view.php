@@ -3,7 +3,8 @@
 <div class="container">
 
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>"  
-    method="POST" enctype="multipart/form-data" >
+        method="POST" 
+        enctype="multipart/form-data" >
 
         <input type="hidden" name="id_opera" value="<?= $id_opera ?>" >
         <div class="form-group row">
