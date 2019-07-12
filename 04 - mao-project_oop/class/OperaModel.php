@@ -93,4 +93,19 @@ class OperaModel
         return $res[0];
 
     }
+
+    public function uploadImmagine(){
+        echo "faccio upload";
+        print_r($_FILES);
+        $handle = new upload($_FILES['Immagine']);
+        if ($handle->uploaded) {
+            $handle->file_auto_rename = true;
+           // $handle->allowed = array('image/*');
+            $handle->process(ROOT."/images/originali"); 
+
+            echo $handle->file_dst_path;
+        }else{
+            echo $handle->error;
+        }
+    }
 }

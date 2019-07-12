@@ -2,7 +2,8 @@
 
 <div class="container">
 
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>"  method="POST">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>"  
+    method="POST" enctype="multipart/form-data" >
         <div class="form-group row">
             <label for="Autore" class="col-4 col-form-label">Inserisci l'autore dell'opera</label>
             <div class="col-8">

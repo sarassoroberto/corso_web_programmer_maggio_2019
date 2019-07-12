@@ -4,6 +4,7 @@ include "../../autoload.php";
 // gestire inserimento dell'opera
 // - validazione server
 $id_opera = filter_input(INPUT_GET,'id_opera',FILTER_VALIDATE_INT);
+$conn = DbConnection::getConnection();
 $om = new OperaModel($conn);
 if($id_opera){
     
@@ -36,11 +37,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         // se tutto ok
         // salviamo opera nel datbase
         
-        $conn = DbConnection::getConnection();
        
-        $om->create($opera);
+       
+        $om->uploadImmagine();
+        //$om->create($opera);
 
-        header('Location: ./elenco_opere_controller.php');
+       // header('Location: ./elenco_opere_controller.php');
         //echo "tutto ok";
     }
     
