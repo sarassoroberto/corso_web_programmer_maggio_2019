@@ -3,6 +3,9 @@ include "../../config.php";
 include "../../autoload.php";
 // gestire inserimento dell'opera
 // - validazione server
+
+print_r($_POST);
+
 $id_opera = filter_input(INPUT_GET,'id_opera',FILTER_VALIDATE_INT);
 
 $conn = DbConnection::getConnection();
@@ -34,17 +37,24 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $opera->Datazione = filter_input(INPUT_POST,'Datazione');
     $opera->Dimensioni = filter_input(INPUT_POST,'Dimensioni');
     $opera->Immagine = filter_input(INPUT_POST,'Immagine');
+    $id_opera = filter_input(INPUT_POST,'id_opera');
 
     if(count($errors)==0){
         // se tutto ok
         // salviamo opera nel datbase
-        
+        if($id_opera){
+            $opera->id_opera = $id_opera;
+            // modifica
+            $om->update($opera);
+        }else{
+            // inserimento
+            $om->create($opera);
+        }
        
        
         //$om->uploadImmagine();
-        $om->create($opera);
         header('Location: ./elenco_opere_controller.php');
-        //echo "tutto ok";
+       
     }
     
 }

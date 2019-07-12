@@ -67,8 +67,33 @@ class OperaModel
      * permette di aggiornare i dati di un opera
      */
     public function update(Opera $opera)
-    { }
+    { 
+        echo "sono update<br>";
+        print_r($opera);
+        
+        $sql = "UPDATE opera SET Titolo = :Titolo,
+                                 Autore = :Autore,
+                                 Datazione = :Datazione,
+                                 Tecnica = :Tecnica,
+                                 Dimensioni = :Dimensioni,
+                                 Immagine = :Immagine
+                WHERE id_opera = :id_opera;
+        ";
 
+            $stm = $this->pdo->prepare($sql); // PDOStatement
+
+            $stm->bindValue(':Autore', $opera->Autore);
+            $stm->bindValue(':Titolo', $opera->Titolo);
+            $stm->bindValue(':Datazione', $opera->Datazione);
+            $stm->bindValue(':Tecnica', $opera->Tecnica);
+            $stm->bindValue(':Dimensioni', $opera->Dimensioni);
+            $stm->bindValue(':Immagine', $opera->Immagine);
+            $stm->bindValue(':id_opera', $opera->id_opera);
+            // assegna i parametri
+
+            // eseguire la query
+            $stm->execute();
+    }
     /**
      * permette di cancellare un opera
      */
@@ -89,7 +114,7 @@ class OperaModel
         $stm = $this->pdo->prepare($sql);
         $stm->execute();
         $res = $stm->fetchAll(PDO::FETCH_CLASS,'Opera');
-        
+
         return $res[0];
 
     }
